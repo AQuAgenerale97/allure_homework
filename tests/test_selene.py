@@ -1,18 +1,19 @@
 import allure
 from allure_commons.types import Severity
-from selene import by, be
 from selene.support.shared.jquery_style import s
+from selene.support.conditions.have import exact_text
+from selene.support.shared import browser
 
 
 @allure.tag('web')
 @allure.severity(Severity.CRITICAL)
 @allure.label('owner', 'slinkov')
-@allure.feature('Задачи в репозитории №1')
-@allure.story('Пользователь делает поиск в github')
+@allure.title('allure autotest with selene only')
+@allure.feature('Таба issue')
+@allure.story('Наименование issue')
 @allure.link('https://github.com', name='Testing')
-def test_selene(open_browser):
-    browser.open("https://github.com/Nastya-Leto/HW_allure_10")
+def test_github_issue():
+    browser.open("https://github.com/AQuAgenerale97/qa_java")
 
     s("#issues-tab").click()
-
-    s('#issue_1_link').should(exact_text('Enjoy autumn'))
+    s('#issue_3_link').should(exact_text('Sprint_2 finalProject'))
